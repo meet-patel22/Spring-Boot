@@ -20,12 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EmployeeController {
+
 	@Autowired
-	EmployeeService service;
+	EmployeeService employeeService;
 
 	@GetMapping("/")
 	public String getAllEmployees(Model model) {
-		List<Employee> list = service.listAll();
+		List<Employee> list = employeeService.listAll();
 		model.addAttribute("employees", list);
 		return "list-employees";
 	}
@@ -41,27 +42,27 @@ public class EmployeeController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("employee") Employee employee) {
 //		service.createOrUpdateEmployee(employee);
-		service.save(employee);
+		employeeService.save(employee);
 		return "redirect:/";
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
-		Employee entity = service.getEmployeeById(id);
+		Employee entity = employeeService.getEmployeeById(id);
 
-		return new ResponseEntity<Employee>(entity, new HttpHeaders(), HttpStatus.OK);
+		return new ResponseEntity<Employee>(entity, new HttpHeaders(),HttpStatus.OK);
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String deleteEmployeeById(@PathVariable(name = "id") long id) {
-		service.delete(id);
+		employeeService.delete(id);
 		return "redirect:/";
 	}
 
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditEmployeePage(@PathVariable(name = "id") long id) {
 		ModelAndView mav = new ModelAndView("edit-employee");
-		Employee employee = service.getEmployeeById(id);
+		Employee employee = employeeService.getEmployeeById(id);
 		mav.addObject("employee", employee);
 
 		return mav;

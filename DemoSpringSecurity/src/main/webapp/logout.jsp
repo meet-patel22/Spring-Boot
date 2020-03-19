@@ -9,5 +9,6 @@
 <body>
 aliens you are LOGGED-OUT ...!!!!
 Logout home<br>
+<a href="/">home</a>
 </body>
 </html>

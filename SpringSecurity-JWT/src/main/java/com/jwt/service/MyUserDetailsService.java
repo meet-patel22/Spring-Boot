@@ -1,22 +1,23 @@
-package com.secureapp.demo;
+package com.jwt.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
-public class MyUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UserRepository repository;
+@Service
+public class MyUserDetailsService implements UserDetailsService
+{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = repository.findByUsername(username);
-		if (user == null)
-			throw new UsernameNotFoundException("404");
-		return new UserPrincipal(user);
+		
+		return new User("foo","foo",new ArrayList<>());
 	}
+	
+
 }

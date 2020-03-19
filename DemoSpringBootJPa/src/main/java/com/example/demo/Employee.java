@@ -56,10 +56,10 @@ public class Employee {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+//	}
 
 	public Employee(Long id, String firstName, String lastName, String email) {
 		super();
@@ -70,7 +70,7 @@ public class Employee {
 	}
 
 	public Employee() {
-		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 
